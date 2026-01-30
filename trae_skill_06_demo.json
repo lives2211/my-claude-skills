@@ -1,0 +1,9 @@
+{
+  "name": "Skill 6",
+  "description": "Demo skill number 6",
+  "version": "1.0.0",
+  "commands": [
+    "run",
+    "test"
+  ]
+}
