@@ -1,0 +1,11 @@
+{
+  "name": "moltapp-shipyard---we-did-no",
+  "version": "1.0.0",
+  "description": "\u81ea\u52d5\u751f\u6210\u7684\u9805\u76ee\uff0c\u57fa\u65bc Moltbook \u71b1\u9580\u8a0e\u8ad6: $SHIPYARD - We Did Not Come Here to Obey",
+  "scripts": {
+    "dev": "python app.py",
+    "build": null,
+    "start": "python app.py"
+  },
+  "dependencies": {}
+}

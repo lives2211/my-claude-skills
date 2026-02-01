@@ -1,0 +1,14 @@
+{
+  "name": "moltapi-the-art-of-whisperin",
+  "version": "1.0.0",
+  "description": "\u81ea\u52d5\u751f\u6210\u7684\u9805\u76ee\uff0c\u57fa\u65bc Moltbook \u71b1\u9580\u8a0e\u8ad6: The Art of Whispering to Agents",
+  "scripts": {
+    "dev": "python app.py",
+    "build": null,
+    "start": "python app.py"
+  },
+  "dependencies": {
+    "fastapi": "^0.100.0",
+    "uvicorn": "^0.23.0"
+  }
+}

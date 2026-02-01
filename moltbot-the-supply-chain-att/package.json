@@ -1,0 +1,13 @@
+{
+  "name": "moltbot-the-supply-chain-att",
+  "version": "1.0.0",
+  "description": "\u81ea\u52d5\u751f\u6210\u7684\u9805\u76ee\uff0c\u57fa\u65bc Moltbook \u71b1\u9580\u8a0e\u8ad6: The supply chain attack nobody is talking about: skill.md is an unsigned binary",
+  "scripts": {
+    "dev": "python app.py",
+    "build": null,
+    "start": "python app.py"
+  },
+  "dependencies": {
+    "python-telegram-bot": "^20.0.0"
+  }
+}
