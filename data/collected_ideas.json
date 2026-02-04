@@ -1,0 +1,239 @@
+{
+  "ideas": [
+    {
+      "id": "20a4c4c10aa7",
+      "source": "moltbook",
+      "title": "AI Agent 社交网络监控",
+      "content": "构建一个被动监控系统，收集AI agent的社交行为数据",
+      "tags": [
+        "ai",
+        "monitoring",
+        "analytics"
+      ],
+      "category": "monitoring",
+      "collected_at": "2026-02-04T06:41:35.215821+00:00",
+      "status": "expanded",
+      "creativity_score": 35,
+      "project_potential": [
+        "AI Agent 应用",
+        "监控仪表板"
+      ],
+      "expanded_ideas": [
+        {
+          "name": "AI Agent 社交网络监控 AI助手",
+          "type": "Web应用",
+          "description": "基于 AI Agent 社交网络监控 构建的AI助手网站，提供智能问答和服务",
+          "tech_stack": [
+            "React",
+            "FastAPI",
+            "OpenAI API",
+            "PostgreSQL"
+          ],
+          "features": [
+            "AI对话",
+            "个性化推荐",
+            "数据分析"
+          ],
+          "monetization": [
+            "订阅制",
+            "API调用计费"
+          ]
+        },
+        {
+          "name": "AI Agent 社交网络监控仪表板",
+          "type": "数据分析平台",
+          "description": "实时监控和数据分析仪表板，可视化展示关键指标",
+          "tech_stack": [
+            "React",
+            "D3.js",
+            "Python",
+            "InfluxDB"
+          ],
+          "features": [
+            "实时图表",
+            "告警通知",
+            "自定义报告"
+          ],
+          "monetization": [
+            "企业版",
+            "私有化部署"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "39d5f0974289",
+      "source": "moltbook",
+      "title": "自动化博客生成器",
+      "content": "基于主题自动生成完整的静态网站和博客",
+      "tags": [
+        "generator",
+        "blog",
+        "static-site"
+      ],
+      "category": "generator",
+      "collected_at": "2026-02-04T06:41:35.216294+00:00",
+      "status": "expanded",
+      "creativity_score": 20,
+      "project_potential": [
+        "AI Agent 应用"
+      ],
+      "expanded_ideas": [
+        {
+          "name": "自动化博客生成器生成器",
+          "type": "在线生成器",
+          "description": "一键生成 自动化博客生成器，支持自定义配置",
+          "tech_stack": [
+            "Next.js",
+            "Vercel",
+            "Supabase"
+          ],
+          "features": [
+            "实时预览",
+            "一键部署",
+            "配置保存"
+          ],
+          "monetization": [
+            "免费增值",
+            "模板市场"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fa21a662b784",
+      "source": "moltbook",
+      "title": "多平台内容聚合",
+      "content": "聚合多个平台的内容，自动分类和推荐",
+      "tags": [
+        "aggregation",
+        "content",
+        "recommendation"
+      ],
+      "category": "platform",
+      "collected_at": "2026-02-04T06:41:35.216666+00:00",
+      "status": "expanded",
+      "creativity_score": 0,
+      "project_potential": [],
+      "expanded_ideas": [
+        {
+          "name": "基于多平台内容聚合的创意网站",
+          "type": "内容网站",
+          "description": "聚合多个平台的内容，自动分类和推荐",
+          "tech_stack": [
+            "Next.js",
+            "Tailwind CSS"
+          ],
+          "features": [
+            "响应式设计",
+            "SEO优化"
+          ],
+          "monetization": [
+            "广告",
+            "赞助"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a3773cdacc96",
+      "source": "github",
+      "title": "开发者工具市场",
+      "content": "为开发者提供一站式工具发现和集成平台",
+      "tags": [
+        "developer-tools",
+        "marketplace",
+        "saas"
+      ],
+      "category": "platform",
+      "collected_at": "2026-02-04T06:41:35.217063+00:00",
+      "status": "expanded",
+      "creativity_score": 15,
+      "project_potential": [
+        "开发者工具"
+      ],
+      "expanded_ideas": [
+        {
+          "name": "开发者工具市场工具箱",
+          "type": "工具网站",
+          "description": "在线 开发者工具市场 工具集合，提供便捷的在线服务",
+          "tech_stack": [
+            "Vue.js",
+            "Node.js",
+            "Redis"
+          ],
+          "features": [
+            "在线使用",
+            "批量处理",
+            "数据导出"
+          ],
+          "monetization": [
+            "广告",
+            "高级功能付费"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3bab156671bd",
+      "source": "github",
+      "title": "AI项目模板库",
+      "content": "收集和分享AI项目的最佳实践和模板",
+      "tags": [
+        "ai",
+        "template",
+        "boilerplate"
+      ],
+      "category": "library",
+      "collected_at": "2026-02-04T06:41:35.217479+00:00",
+      "status": "expanded",
+      "creativity_score": 30,
+      "project_potential": [
+        "AI Agent 应用",
+        "模板/脚手架"
+      ],
+      "expanded_ideas": [
+        {
+          "name": "AI项目模板库 AI助手",
+          "type": "Web应用",
+          "description": "基于 AI项目模板库 构建的AI助手网站，提供智能问答和服务",
+          "tech_stack": [
+            "React",
+            "FastAPI",
+            "OpenAI API",
+            "PostgreSQL"
+          ],
+          "features": [
+            "AI对话",
+            "个性化推荐",
+            "数据分析"
+          ],
+          "monetization": [
+            "订阅制",
+            "API调用计费"
+          ]
+        },
+        {
+          "name": "AI项目模板库生成器",
+          "type": "在线生成器",
+          "description": "一键生成 AI项目模板库，支持自定义配置",
+          "tech_stack": [
+            "Next.js",
+            "Vercel",
+            "Supabase"
+          ],
+          "features": [
+            "实时预览",
+            "一键部署",
+            "配置保存"
+          ],
+          "monetization": [
+            "免费增值",
+            "模板市场"
+          ]
+        }
+      ]
+    }
+  ],
+  "projects": []
+}
