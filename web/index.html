@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Moltbook 观测仪表板</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <div id="app">
+        <!-- Header -->
+        <header class="bg-white/5 border-b border-white/10">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold">🎯 Moltbook 观测仪表板</h1>
+                    <p class="text-gray-400 text-sm">被动监控 + 自动分析 + 智能构建</p>
+                </div>
+                <div class="flex gap-4">
+                    <button @click="refreshAll" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg">
+                        🔄 刷新
+                    </button>
+                    <button @click="autoBuild" class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg">
+                        🔨 自动构建
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-4 py-8">
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+                <div class="bg-white/5 rounded-xl p-4 text-center">
+                    <div class="text-3xl font-bold text-purple-400">{{ stats.total_posts || 0 }}</div>
+                    <div class="text-gray-400 text-sm">总帖子</div>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 text-center">
+                    <div class="text-3xl font-bold text-blue-400">{{ stats.total_agents || 0 }}</div>
+                    <div class="text-gray-400 text-sm">总Agent</div>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 text-center">
+                    <div class="text-3xl font-bold text-green-400">{{ stats.total_submolts || 0 }}</div>
+                    <div class="text-gray-400 text-sm">总Submolt</div>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 text-center">
+                    <div class="text-3xl font-bold text-yellow-400">{{ stats.high_score_ideas || 0 }}</div>
+                    <div class="text-gray-400 text-sm">高分创意</div>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 text-center">
+                    <div class="text-3xl font-bold text-pink-400">{{ stats.built_projects || 0 }}</div>
+                    <div class="text-gray-400 text-sm">已构建</div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex gap-4 mb-6">
+                <button 
+                    @click="activeTab = 'ideas'" 
+                    :class="activeTab === 'ideas' ? 'bg-purple-600' : 'bg-white/10'"
+                    class="px-6 py-2 rounded-lg font-semibold"
+                >
+                    💡 创意
+                </button>
+                <button 
+                    @click="activeTab = 'projects'" 
+                    :class="activeTab === 'projects' ? 'bg-purple-600' : 'bg-white/10'"
+                    class="px-6 py-2 rounded-lg font-semibold"
+                >
+                    🔨 项目
+                </button>
+                <button 
+                    @click="activeTab = 'analyzer'" 
+                    :class="activeTab === 'analyzer' ? 'bg-purple-600' : 'bg-white/10'"
+                    class="px-6 py-2 rounded-lg font-semibold"
+                >
+                    🔍 分析器
+                </button>
+            </div>
+
+            <!-- Ideas Tab -->
+            <div v-if="activeTab === 'ideas'">
+                <h2 class="text-2xl font-bold mb-4">🏆 Top 创意</h2>
+                <div class="grid gap-4">
+                    <div 
+                        v-for="idea in ideas" 
+                        :key="idea.id"
+                        class="bg-white/5 rounded-xl p-6 border border-white/10"
+                    >
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold">{{ idea.title }}</h3>
+                            <div class="flex items-center gap-2">
+                                <span 
+                                    :class="idea.creativity_score >= 50 ? 'bg-green-600' : 'bg-yellow-600'"
+                                    class="px-3 py-1 rounded-full text-sm font-bold"
+                                >
+                                    {{ idea.creativity_score }}分
+                                </span>
+                                <button 
+                                    @click="buildProject(idea.id)"
+                                    class="px-3 py-1 bg-purple-600 hover:bg-purple-700 rounded-lg text-sm"
+                                >
+                                    构建
+                                </button>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 mb-4">{{ idea.content }}</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span v-for="tag in idea.tags" :key="tag" class="px-2 py-1 bg-white/10 rounded text-sm">
+                                {{ tag }}
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                            <div>
+                                <span class="text-gray-400">类别:</span>
+                                <span class="ml-2">{{ idea.category }}</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-400">作者:</span>
+                                <span class="ml-2">{{ idea.author }}</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-400">点赞:</span>
+                                <span class="ml-2">{{ idea.upvotes }}</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-400">变现:</span>
+                                <span class="ml-2 text-green-400">{{ idea.monetization?.join(', ') }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Tab -->
+            <div v-if="activeTab === 'projects'">
+                <h2 class="text-2xl font-bold mb-4">🔨 已构建项目</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div 
+                        v-for="project in projects" 
+                        :key="project.id"
+                        class="bg-gradient-to-br from-purple-900/50 to-indigo-900/50 rounded-xl p-6 border border-white/10"
+                    >
+                        <h3 class="text-xl font-bold mb-2">{{ project.name }}</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-purple-600/50 rounded text-sm">{{ project.type }}</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">{{ project.description }}</p>
+                        <div class="text-sm">
+                            <span class="text-gray-400">技术栈:</span>
+                            <div class="flex flex-wrap gap-1 mt-1">
+                                <span 
+                                    v-for="tech in project.tech_stack" 
+                                    :key="tech"
+                                    class="px-2 py-0.5 bg-white/10 rounded text-xs"
+                                >
+                                    {{ tech }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-white/10 text-sm text-gray-400">
+                            📁 {{ project.files?.length || 0 }} 个文件
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analyzer Tab -->
+            <div v-if="activeTab === 'analyzer'">
+                <h2 class="text-2xl font-bold mb-4">🔍 创意分析器</h2>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10 mb-6">
+                    <div class="mb-4">
+                        <label class="block text-gray-400 mb-2">创意标题</label>
+                        <input 
+                            v-model="analyzerInput.title"
+                            type="text"
+                            placeholder="输入创意标题..."
+                            class="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+                        >
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-400 mb-2">详细描述</label>
+                        <textarea 
+                            v-model="analyzerInput.content"
+                            placeholder="描述你的想法..."
+                            rows="4"
+                            class="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white resize-none"
+                        ></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-400 mb-2">标签 (逗号分隔)</label>
+                        <input 
+                            v-model="analyzerInput.tags"
+                            type="text"
+                            placeholder="ai, tool, automation..."
+                            class="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+                        >
+                    </div>
+                    <button 
+                        @click="analyzeIdea"
+                        class="px-6 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg font-semibold"
+                    >
+                        分析创意
+                    </button>
+                </div>
+
+                <div v-if="analyzerResult" class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="text-4xl font-bold" :class="analyzerResult.creativity_score >= 50 ? 'text-green-400' : 'text-yellow-400'">
+                            {{ analyzerResult.creativity_score }}分
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">{{ analyzerResult.category }}</h3>
+                            <p class="text-gray-400">{{ analyzerResult.reasons?.join(', ') }}</p>
+                        </div>
+                    </div>
+
+                    <h4 class="font-semibold mb-2">推荐项目方向</h4>
+                    <div class="grid gap-2 mb-4">
+                        <div 
+                            v-for="(direction, idx) in analyzerResult.project_directions" 
+                            :key="idx"
+                            class="p-3 bg-white/5 rounded-lg"
+                        >
+                            <div class="font-semibold">{{ direction.type }}</div>
+                            <div class="text-gray-400 text-sm">{{ direction.description }}</div>
+                        </div>
+                    </div>
+
+                    <h4 class="font-semibold mb-2">推荐技术栈</h4>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-purple-600/50 rounded">{{ analyzerResult.tech_stack?.frontend?.join(', ') }}</span>
+                    </div>
+
+                    <h4 class="font-semibold mb-2">变现方式</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span v-for="m in analyzerResult.monetization" :key="m" class="px-3 py-1 bg-green-600/50 rounded">
+                            {{ m }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Toast -->
+        <div 
+            v-if="toast.show" 
+            :class="toast.type === 'success' ? 'bg-green-600' : 'bg-red-600'"
+            class="fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg"
+        >
+            {{ toast.message }}
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, reactive, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                const stats = ref({});
+                const ideas = ref([]);
+                const projects = ref([]);
+                const activeTab = ref('ideas');
+                const toast = reactive({ show: false, message: '', type: 'success' });
+                const analyzerInput = reactive({ title: '', content: '', tags: '' });
+                const analyzerResult = ref(null);
+                const API_BASE = '';
+
+                const showToast = (message, type = 'success') => {
+                    toast.message = message;
+                    toast.type = type;
+                    toast.show = true;
+                    setTimeout(() => toast.show = false, 3000);
+                };
+
+                const fetchStats = async () => {
+                    try {
+                        const res = await axios.get('/api/stats');
+                        stats.value = res.data;
+                    } catch (e) { console.error(e); }
+                };
+
+                const fetchIdeas = async () => {
+                    try {
+                        const res = await axios.get('/api/ideas?limit=10');
+                        ideas.value = res.data.data || [];
+                    } catch (e) { console.error(e); }
+                };
+
+                const fetchProjects = async () => {
+                    try {
+                        const res = await axios.get('/api/projects');
+                        projects.value = res.data.data || [];
+                    } catch (e) { console.error(e); }
+                };
+
+                const refreshAll = async () => {
+                    await fetchStats();
+                    await fetchIdeas();
+                    await fetchProjects();
+                    showToast('数据已刷新');
+                };
+
+                const analyzeIdea = async () => {
+                    if (!analyzerInput.title || !analyzerInput.content) {
+                        showToast('请填写标题和描述', 'error');
+                        return;
+                    }
+                    try {
+                        const res = await axios.post('/api/analyze', {
+                            title: analyzerInput.title,
+                            content: analyzerInput.content,
+                            tags: analyzerInput.tags.split(',').map(t => t.trim()).filter(t => t),
+                            upvotes: 0
+                        });
+                        analyzerResult.value = res.data;
+                    } catch (e) { showToast('分析失败', 'error'); }
+                };
+
+                const buildProject = async (ideaId) => {
+                    try {
+                        const res = await axios.post(`/api/build?idea_id=${ideaId}`);
+                        if (res.data.success) {
+                            showToast(`项目 ${res.data.project_name} 构建成功!`);
+                            await fetchProjects();
+                        } else {
+                            showToast('构建失败', 'error');
+                        }
+                    } catch (e) { showToast('构建失败', 'error'); }
+                };
+
+                const autoBuild = async () => {
+                    showToast('开始自动构建...');
+                    // 自动构建逻辑
+                    for (const idea of ideas.value.slice(0, 3)) {
+                        await buildProject(idea.id);
+                        await new Promise(r => setTimeout(r, 500));
+                    }
+                };
+
+                onMounted(() => {
+                    refreshAll();
+                });
+
+                return {
+                    stats, ideas, projects, activeTab, toast, analyzerInput, analyzerResult,
+                    refreshAll, analyzeIdea, buildProject, autoBuild
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
