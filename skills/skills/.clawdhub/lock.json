@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "skills": {
+    "kubernetes": {
+      "version": "1.0.0",
+      "installedAt": 1770268978388
+    },
+    "docker-essentials": {
+      "version": "1.0.0",
+      "installedAt": 1770268980406
+    },
+    "slack": {
+      "version": "1.0.0",
+      "installedAt": 1770268982731
+    },
+    "notion": {
+      "version": "1.0.0",
+      "installedAt": 1770268985222
+    },
+    "tg": {
+      "version": "0.1.0",
+      "installedAt": 1770268987294
+    },
+    "computer-use": {
+      "version": "1.2.0",
+      "installedAt": 1770269011443
+    },
+    "webapp-testing": {
+      "version": "0.1.0",
+      "installedAt": 1770269013818
+    },
+    "azure-infra": {
+      "version": "1.0.0",
+      "installedAt": 1770269014426
+    },
+    "ui-ux-pro-max": {
+      "version": "0.1.0",
+      "installedAt": 1770269015465
+    },
+    "aws-infra": {
+      "version": "1.0.0",
+      "installedAt": 1770269015910
+    },
+    "git-sync": {
+      "version": "1.0.0",
+      "installedAt": 1770269016403
+    },
+    "github-pr": {
+      "version": "1.0.0",
+      "installedAt": 1770269017163
+    },
+    "moltbook-curator": {
+      "version": "1.1.0",
+      "installedAt": 1770269018118
+    },
+    "moltbook-registry": {
+      "version": "1.0.3",
+      "installedAt": 1770269018369
+    },
+    "moltchan": {
+      "version": "1.0.4",
+      "installedAt": 1770269018552
+    },
+    "binance": {
+      "version": "1.1.0",
+      "installedAt": 1770269018748
+    },
+    "defi": {
+      "version": "1.1.1",
+      "installedAt": 1770269018834
+    },
+    "weather": {
+      "version": "1.0.0",
+      "installedAt": 1770269019251
+    },
+    "upload-post": {
+      "version": "1.0.0",
+      "installedAt": 1770269019298
+    },
+    "youtube-summarizer": {
+      "version": "1.0.0",
+      "installedAt": 1770269019477
+    },
+    "social-gen": {
+      "version": "1.0.0",
+      "installedAt": 1770269019658
+    },
+    "gitlab-cli-skills": {
+      "version": "1.0.2",
+      "installedAt": 1770269021323
+    },
+    "crypto-wallet": {
+      "version": "1.0.1",
+      "installedAt": 1770269038117
+    },
+    "postgres": {
+      "version": "1.1.0",
+      "installedAt": 1770269038260
+    },
+    "planning-with-files": {
+      "version": "1.2.0",
+      "installedAt": 1770269038669
+    }
+  }
+}

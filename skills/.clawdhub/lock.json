@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "skills": {
+    "github": {
+      "version": "1.0.0",
+      "installedAt": 1770268941434
+    },
+    "git-essentials": {
+      "version": "1.0.0",
+      "installedAt": 1770268950450
+    },
+    "skill-creator": {
+      "version": "0.1.0",
+      "installedAt": 1770268953108
+    },
+    "frontend-design": {
+      "version": "1.0.0",
+      "installedAt": 1770268955274
+    },
+    "moltbook-interact": {
+      "version": "1.0.1",
+      "installedAt": 1770268957836
+    },
+    "test-runner": {
+      "version": "1.0.0",
+      "installedAt": 1770268963081
+    },
+    "debug-pro": {
+      "version": "1.0.0",
+      "installedAt": 1770268965100
+    },
+    "kubernetes": {
+      "version": "1.0.0",
+      "installedAt": 1770268967977
+    },
+    "docker-essentials": {
+      "version": "1.0.0",
+      "installedAt": 1770268970056
+    },
+    "slack": {
+      "version": "1.0.0",
+      "installedAt": 1770268972369
+    },
+    "notion": {
+      "version": "1.0.0",
+      "installedAt": 1770268974881
+    },
+    "tg": {
+      "version": "0.1.0",
+      "installedAt": 1770268977474
+    },
+    "hyperliquid-trading": {
+      "version": "1.0.0",
+      "installedAt": 1770268985924
+    },
+    "binance": {
+      "version": "1.1.0",
+      "installedAt": 1770268988204
+    },
+    "solana-trader": {
+      "version": "1.1.0",
+      "installedAt": 1770268990423
+    },
+    "remotion-best-practices": {
+      "version": "1.0.0",
+      "installedAt": 1770268994720
+    },
+    "nextjs-expert": {
+      "version": "1.0.0",
+      "installedAt": 1770268997180
+    },
+    "ui-ux-pro-max": {
+      "version": "0.1.0",
+      "installedAt": 1770269002717
+    },
+    "computer-use": {
+      "version": "1.2.0",
+      "installedAt": 1770269005780
+    },
+    "webapp-testing": {
+      "version": "0.1.0",
+      "installedAt": 1770269013751
+    },
+    "azure-infra": {
+      "version": "1.0.0",
+      "installedAt": 1770269019815
+    },
+    "aws-infra": {
+      "version": "1.0.0",
+      "installedAt": 1770269021970
+    }
+  }
+}
